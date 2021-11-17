@@ -1,0 +1,63 @@
+
+
+.button3{
+    display: flex;
+    background-color: black;
+   color: white;
+   font-size: 1rem;
+   padding:0.5rem 0.5rem;
+   border-radius:2rem;
+   margin: 1rem;
+   cursor: pointer;
+   align-self: flex-end;
+   text-decoration: none;
+ 
+ }
+
+ .button3:hover {
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+}
+
+.appbar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    /*Adicione aqui o estilo desta classe*/
+    height: 20rem;
+    margin: 1rem;
+    border: none;
+    align-self: center;
+    justify-content: center;
+  
+    border-radius: 2rem;
+    
+  }
+
+.link{
+    text-decoration: none;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    
+    
+}
+
+.textao{
+    margin-left: 2rem;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-style: italic;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
