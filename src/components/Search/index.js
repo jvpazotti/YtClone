@@ -74,19 +74,29 @@ export default function Search(props){
         setName(event.target.value);
     }
 
+    const SetFavorite = (event) => {
+      event.preventDefault();
+      
+    }
+
+    const ActivSearch = (event) => {
+      if(event.code === 'Enter'){
+        console.log("teste")
+      }
+    }
+
     return(
         
      <div>
             <div className='search-box'>
-                <form className='ui form'>
                   <button class="btn-search"><img className="lupa" src="lupa.png"/></button>
                   <input type="text" class="input-search"  
                       onChange={nameChanged} 
                       name='video-search'
                       placeholder="Digite Aqui"
                       value={Name}
+                      onKeyPress={ActivSearch}
                   />
-                </form>
             </div>
 
      </div>

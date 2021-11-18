@@ -19,9 +19,6 @@ export default function Home(){
           <div className="header">
           <img src="/ytLogo.png" className="logo"/>
           </div>
-          <Link className="link" to="/favorites">
-          <button className="button3">Músicas Favoritas</button>
-          </Link>
         </div>
       <main className="container">
         <Search/>
