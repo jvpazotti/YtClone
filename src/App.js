@@ -12,7 +12,7 @@ import Formulario from "./components/Formulario";
 import Search from "./components/Search";
 import "./App.css";
 import Home from "./components/Home";
-import Favorites from "./components/Favorites";
+import Results from "./components/Results";
 
 
 
@@ -28,8 +28,10 @@ function App() {
         <Route exact path="/">
           <Home/>
         </Route>
-        <Route path="/favorites">
-          <Favorites/>
+        <Route exact path="/results/:search">
+          <Results>
+            {this.props.match.params.search}
+          </Results>
         </Route>
       </Switch>
     </Router>

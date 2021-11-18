@@ -1,0 +1,14 @@
+.single {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 6rem;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: white;
+}
+
+.thumb {
+  margin: 0 1rem;
+  height: 5rem;
+  width: 7rem;
+}

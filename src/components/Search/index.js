@@ -1,89 +1,62 @@
 import {useState} from "react";
 import React from "react";
 import axios from "axios";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./index.css";
-import Note from "../Note";
-//import { MDBCol, MDBFormInline, MDBIcon } from "mdbreact";
+import youtube from "../../apis/youtube";
+
+
 
 export default function Search(props){
 
     const [Name, setName] = useState("");
 
-    const [songs, setSongs] = useState([]);
+    const [videos, setVideos] = useState([]);
 
-    const loadData = (search) => {
-      var options = {
-        method: 'GET',
-        url: 'https://genius.p.rapidapi.com/search',
-        params: {q:search},
-        headers: {
-          'x-rapidapi-host': 'genius.p.rapidapi.com',
-          'x-rapidapi-key': '4e32c1df78msh539e6d5cfcb313dp17b785jsn97e18e394b47'
-        }
-      };
+    const [selectedVideo, setSelectedVideo] = useState(null);
 
-      let favs = []
-
-      axios.get("https://dummiosback.herokuapp.com/favoritesBack").then((response) => {
-        for (var [key, song] in Object.entries(response.data)) {
-          favs.push(response.data[key].song_id)
-        }
-      }).then(
-        axios.request(options).then((response)=> {
-  
-          let music = []
-          console.log(response.data)
-    
-          for (let i = 0; i<10; i++) {
-            let id = response.data.response.hits[`${i}`]["result"]["id"]
-            let song = response.data.response.hits[`${i}`]["result"]["title"]
-            let artist = response.data.response.hits[`${i}`]["result"]["artist_names"]
-            let is_fav = false;
-            for (var [fav_key, fav_id] in Object.entries(favs)) {
-              if (id == favs[fav_key]) {
-                is_fav = true;
-              } else if (!is_fav) {
-                is_fav = false;
-              }
-            }
-            console.log(`${song} is favorite? : ${is_fav}`);
-            music.push([song, artist, id, is_fav]);
-            
-          }
-    
-          setSongs(music);
-        })
-      )  
-    }
-
-    const GetArtist = (event) => {
-        
-        event.preventDefault();
-        
-        loadData(Name);
-
-    }
+    const history = useHistory();
 
     const nameChanged = (event) =>{
         setName(event.target.value);
     }
 
-    const SetFavorite = (event) => {
-      event.preventDefault();
+    const handleSubmit = async (termFromSearchBar) => {
+
+      let list=[];
+
+      const response = await youtube.get('/search', {
+          params: {
+              q: termFromSearchBar
+          }
+      })
+
+      for (let i = 0; i<10; i++){
+        let title=response.data.items[`${i}`]["snippet"]["title"];
+        let thumb=response.data.items[`${i}`]["snippet"]["thumbnails"]["default"]["url"];
+        list.push([title,thumb]);
+      }
+
       
+
+      setVideos(list)
+
+      console.log(response.data.items);
     }
 
     const ActivSearch = (event) => {
       if(event.code === 'Enter'){
         console.log("teste")
+        handleSubmit(Name);
+        // history.push(`/results/${Name}`)
       }
     }
+
+    const handleVideoSelect = (video) => {
+      setSelectedVideo(video);
+    }
+
+    
 
     return(
         
@@ -97,6 +70,14 @@ export default function Search(props){
                       value={Name}
                       onKeyPress={ActivSearch}
                   />
+            </div>
+
+            <div className="divisor">
+             {videos.map((video)=>(
+               <><p className="videos">
+                 {video[0]}
+               </p><img src ={video[1]}/></>
+             ))}
             </div>
 
      </div>
