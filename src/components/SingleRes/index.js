@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import axios from "axios";
 import "./index.css"
 
-export default function SingleRes(){
+export default function SingleRes(props){
 
     const history = useHistory();
 
@@ -14,13 +14,12 @@ export default function SingleRes(){
     return(
 
         <div className="single" onClick={GoToVideo}>
-            {/* <img className="thumb" src={} alt={}/> */}
-            <img className="thumb"/>
+            <img className="thumb" src={props.children[0]}/>
             <div className="texts">
-                <h3 className="title">Titulo</h3>
-                <h4 className="channel">Canal</h4>
-                <p className="description">qwerty asdf zxcvb poiu lkjhg mn</p>
-                <p classsName="date">1234</p>
+                <h3 className="title">{props.children[1]}</h3>
+                <h4 className="channel">{props.children[2]}</h4>
+                <p className="description">{props.children[3]}</p>
+                <p classsName="date">{props.children[4]}</p>
             </div>
         </div>
 

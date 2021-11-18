@@ -1,9 +1,9 @@
 import React from "react"
 import "./index.css"
 import SingleRes from "../SingleRes"
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import youtube from "../../apis/youtube";
-import {useState} from "react";
+import { useState, useEffect } from "react";
 
 
 export default function Results() {
@@ -32,17 +32,20 @@ export default function Results() {
     })
 
     for (let i = 0; i<10; i++){
-      let title=response.data.items[`${i}`]["snippet"]["title"];
-      let thumb=response.data.items[`${i}`]["snippet"]["thumbnails"]["default"]["url"];
-      list.push([title,thumb]);
+      let thumb = response.data.items[`${i}`]["snippet"]["thumbnails"]["default"]["url"];
+      let title = response.data.items[`${i}`]["snippet"]["title"];
+      let channel = response.data.items[`${i}`]["snippet"]["channelTitle"];
+      let description = response.data.items[`${i}`]["snippet"]["description"];
+      let date = response.data.items[`${i}`]["snippet"]["publishedAt"];
+      list.push([thumb, title, channel, description, date]);
     }
 
     setVideos(list)
     console.log(response.data.items);
   }
-  
 
-  const list = []
+  useEffect(() => {handleSubmit(search);},[])
+  
 
   return (
     <div>
@@ -50,9 +53,11 @@ export default function Results() {
         <img src="/ytLogo.png" className="logo"/>
       </header>
       <main>
-        <SingleRes>
-
-        </SingleRes>
+        {videos.map((video) => (
+          <SingleRes>
+            {video}
+          </SingleRes>
+        ))}
       </main>
     </div>
   )
