@@ -28,11 +28,7 @@ function App() {
         <Route exact path="/">
           <Home/>
         </Route>
-        <Route exact path="/results/:search">
-          <Results>
-            {this.props.match.params.search}
-          </Results>
-        </Route>
+        <Route exact path="/results=:search" children={<Results/>} />
       </Switch>
     </Router>
 
