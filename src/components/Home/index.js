@@ -13,17 +13,16 @@ export default function Home(){
 
     return(
 
-
       <div className="App">
         <div className="appbar">
           <div className="header">
-          <img src="/ytLogo.png" className="logo"/>
+            <img src="/ytLogo.png" className="logo"/>
           </div>
         </div>
-      <main className="container">
-        <Search/>
-      </main>
-    </div>
+        <main className="container">
+          <Search/>
+        </main>
+      </div>
 
 
     );

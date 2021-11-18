@@ -1,6 +1,7 @@
 import {useState} from "react";
 import React from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import "./index.css";
 import youtube from "../../apis/youtube";
 
@@ -14,16 +15,10 @@ export default function Search(props){
 
     const [selectedVideo, setSelectedVideo] = useState(null);
 
-
-    
+    const history = useHistory();
 
     const nameChanged = (event) =>{
         setName(event.target.value);
-    }
-
-    const SetFavorite = (event) => {
-      event.preventDefault();
-      
     }
 
     const handleSubmit = async (termFromSearchBar) => {
@@ -53,7 +48,7 @@ export default function Search(props){
       if(event.code === 'Enter'){
         console.log("teste")
         handleSubmit(Name);
-       
+        // history.push(`/results/${Name}`)
       }
     }
 
