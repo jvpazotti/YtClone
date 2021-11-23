@@ -27,17 +27,31 @@ export default function Results() {
 
     const response = await youtube.get('/search', {
         params: {
-            q: termFromSearchBar
+          q: termFromSearchBar
         }
     })
 
     for (let i = 0; i<10; i++){
-      let thumb = response.data.items[`${i}`]["snippet"]["thumbnails"]["default"]["url"];
-      let title = response.data.items[`${i}`]["snippet"]["title"];
-      let channel = response.data.items[`${i}`]["snippet"]["channelTitle"];
-      let description = response.data.items[`${i}`]["snippet"]["description"];
-      let date = response.data.items[`${i}`]["snippet"]["publishedAt"];
-      list.push([thumb, title, channel, description, date]);
+      let item = response.data.items[`${i}`];
+      let snippet = item.snippet;
+
+      let thumb = snippet.thumbnails.default.url;
+      let title = snippet.title;
+      let channel = snippet.channelTitle;
+      let description = snippet.description;
+      let date = snippet.publishedAt;
+
+      let kind = item.id.kind.slice(8);
+      let id = "";
+      if (kind == "video") {
+        id = item.id.videoId;
+      } else if (kind == "channel") {
+        id = item.id.channelId;
+      } else if (kind == "playlist") {
+        id = item.id.playlistId;
+      }
+
+      list.push([thumb, title, channel, description, date, kind, id]);
     }
 
     setVideos(list)

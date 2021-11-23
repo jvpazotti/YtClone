@@ -1,18 +1,13 @@
-import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
-import axios from "axios";
-import Note from "./components/Note";
-import Formulario from "./components/Formulario";
-import Search from "./components/Search";
 import "./App.css";
 import Home from "./components/Home";
 import Results from "./components/Results";
+import VideoPlayer from "./components/VideoPlayer";
 
 
 
@@ -25,10 +20,9 @@ function App() {
 
     <Router>
       <Switch>
-        <Route exact path="/">
-          <Home/>
-        </Route>
+        <Route exact path="/" children={<Home/>} />
         <Route exact path="/results=:search" children={<Results/>} />
+        <Route exact path="/video=:videoId" children={<VideoPlayer/>} />
       </Switch>
     </Router>
 
@@ -38,5 +32,3 @@ function App() {
 }
 
 export default App;
-
-//https://dummiofront.herokuapp.com/ | https://git.heroku.com/dummiofront.git
