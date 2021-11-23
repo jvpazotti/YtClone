@@ -4,6 +4,7 @@ import SingleRes from "../SingleRes"
 import { useParams } from "react-router-dom";
 import youtube from "../../apis/youtube";
 import { useState, useEffect } from "react";
+import Search2 from "../Search2";
 
 
 export default function Results() {
@@ -44,6 +45,7 @@ export default function Results() {
     console.log(response.data.items);
   }
 
+  
   useEffect(() => {handleSubmit(search);},[])
   
 
@@ -51,6 +53,7 @@ export default function Results() {
     <div>
       <header>
         <img src="/ytLogo.png" className="logo"/>
+        <Search2 ReloadData={handleSubmit}/>
       </header>
       <main>
         {videos.map((video) => (
