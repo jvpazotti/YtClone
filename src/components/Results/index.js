@@ -27,6 +27,7 @@ export default function Results() {
 
     const response = await youtube.get('/search', {
         params: {
+          maxResults: 10,
           q: termFromSearchBar
         }
     })

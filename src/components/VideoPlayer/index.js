@@ -7,18 +7,18 @@ export default function VideoPlayer() {
 
   let { videoId } = useParams();
 
-  // const loadData = async () => {
+  const loadData = async () => {
 
-  //   const response = await youtube.get('/video', {
-  //     params: {
-  //         id: videoId
-  //     }
-  //   })
+    const response = await youtube.get('/video', {
+      params: {
+          id: videoId
+      }
+    })
 
-  //   console.log(response.loadData);
-  // }
+    console.log(response.loadData);
+  }
 
-  // loadData()
+  loadData()
 
 
   return (
