@@ -4,6 +4,7 @@ import SingleRes from "../SingleRes"
 import { useParams } from "react-router-dom";
 import youtube from "../../apis/youtube";
 import { useState, useEffect } from "react";
+import Search2 from "../Search2";
 
 
 export default function Results() {
@@ -27,23 +28,39 @@ export default function Results() {
 
     const response = await youtube.get('/search', {
         params: {
-            q: termFromSearchBar
+          maxResults: 10,
+          q: termFromSearchBar
         }
     })
 
     for (let i = 0; i<10; i++){
-      let thumb = response.data.items[`${i}`]["snippet"]["thumbnails"]["default"]["url"];
-      let title = response.data.items[`${i}`]["snippet"]["title"];
-      let channel = response.data.items[`${i}`]["snippet"]["channelTitle"];
-      let description = response.data.items[`${i}`]["snippet"]["description"];
-      let date = response.data.items[`${i}`]["snippet"]["publishedAt"];
-      list.push([thumb, title, channel, description, date]);
+      let item = response.data.items[`${i}`];
+      let snippet = item.snippet;
+
+      let thumb = snippet.thumbnails.default.url;
+      let title = snippet.title;
+      let channel = snippet.channelTitle;
+      let description = snippet.description;
+      let date = snippet.publishedAt;
+
+      let kind = item.id.kind.slice(8);
+      let id = "";
+      if (kind == "video") {
+        id = item.id.videoId;
+      } else if (kind == "channel") {
+        id = item.id.channelId;
+      } else if (kind == "playlist") {
+        id = item.id.playlistId;
+      }
+
+      list.push([thumb, title, channel, description, date, kind, id]);
     }
 
     setVideos(list)
     console.log(response.data.items);
   }
 
+  
   useEffect(() => {handleSubmit(search);},[])
   
 
@@ -51,6 +68,7 @@ export default function Results() {
     <div>
       <header>
         <img src="/ytLogo.png" className="logo"/>
+        <Search2 ReloadData={handleSubmit}/>
       </header>
       <main>
         {videos.map((video) => (

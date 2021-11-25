@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./index.css";
@@ -35,6 +35,7 @@ export default function Search(props){
                   />
             </div>
 
+            
             {/* <div className="divisor">
              {videos.map((video)=>(
                <><p className="videos">
