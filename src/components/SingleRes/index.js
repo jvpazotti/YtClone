@@ -6,18 +6,22 @@ export default function SingleRes(props){
 
     const history = useHistory();
 
-    const list=[props.children[1],props.children[2],props.children[3],props.children[4]]
+    const day = props.children[4].slice(8,10);
+    const month = props.children[4].slice(5,7);
+    const year = props.children[4].slice(0,4);
+    const hour = props.children[4].slice(11,16);
+
+    const list=[props.children[1], props.children[2], props.children[3], hour, day, month, year]
 
     const GoToVideo = () => {
-        if (props.children[5] == "video") {
-            //history.push(`/video=${props.children[6]}`);
+        if (props.children[5] === "video") {
             history.push({
                 pathname: `/video=${props.children[6]}`,
                 state: { detail: list }
             });
-        } else if (props.children[5] == "channel") {
+        } else if (props.children[5] === "channel") {
             history.push(`/channel=${props.children[6]}`);
-        } else if (props.children[5] == "playlist") {
+        } else if (props.children[5] === "playlist") {
             history.push(`/playlist=${props.children[6]}`);
         }
     }
@@ -25,12 +29,12 @@ export default function SingleRes(props){
     return(
 
         <div className="single" onClick={GoToVideo}>
-            <img className="thumb" src={props.children[0]}/>
+            <img className="thumb" src={props.children[0]} alt={props.children[1]}/>
             <div className="texts">
                 <h3 className="title">{props.children[1]}</h3>
-                <h4 className="channel">{props.children[2]}</h4>
-                <p className="description">{props.children[3]}</p>
-                <p className="date">{props.children[4]}</p>
+                <h4 className="channel">Channel: {props.children[2]}</h4>
+                <p className="description">Description: {props.children[3]}</p>
+                <p className="date">Published at {day}/{month}/{year}</p>
             </div>
         </div>
 
