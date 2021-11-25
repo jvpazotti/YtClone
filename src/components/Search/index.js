@@ -15,7 +15,6 @@ export default function Search(props){
 
     const ActivSearch = (event) => {
       if(event.code === 'Enter'){
-        console.log("teste")
         history.push(`/results=${Name}`)
       }
     }
@@ -24,8 +23,8 @@ export default function Search(props){
         
       <div>
         <div className='search-box'>
-          <button class="btn-search"><img className="lupa" src="lupa.png"/></button>
-          <input type="text" class="input-search"  
+          <button className="btn-search"><img className="lupa" src="lupa.png" alt="search"/></button>
+          <input type="text" className="input-search"  
               onChange={nameChanged} 
               name='video-search'
               placeholder="Digite Aqui"

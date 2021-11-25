@@ -10,7 +10,7 @@ export default function Home(){
       <div className="App">
         <div className="appbar">
           <div className="superLogo">
-            <img src="/ytLogo.png" className="ytLogo"/>
+            <img src="/ytLogo.png" className="ytLogo" alt="logo"/>
             <h1>YtClone</h1>
           </div>
         </div>

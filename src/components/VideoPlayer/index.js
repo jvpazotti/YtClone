@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import { useParams } from "react-router";
 import "./index.css"
 import { useLocation } from "react-router-dom";
@@ -9,11 +9,6 @@ export default function VideoPlayer() {
   let { videoId } = useParams();
 
   const location = useLocation();
-
-  useEffect(() => {
-    console.log(location.pathname);
-    console.log(location.state.detail);
-  }, [location]);
 
   let details = location.state.detail
 
@@ -41,6 +36,6 @@ export default function VideoPlayer() {
         </ul>
       </main>
     </div>
-    
+
   )
 }

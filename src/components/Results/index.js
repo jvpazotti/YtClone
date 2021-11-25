@@ -9,16 +9,7 @@ import Header from "../Header";
 export default function Results() {
 
   let { search } = useParams();
-  console.log(search);
-
   const [videos, setVideos] = useState([]);
-
-  const [selectedVideo, setSelectedVideo] = useState(null);
-
-
-  const handleVideoSelect = (video) => {
-    setSelectedVideo(video);
-  }
 
 
   const handleSubmit = async (termFromSearchBar) => {
@@ -33,6 +24,7 @@ export default function Results() {
     })
 
     for (let i = 0; i<10; i++){
+
       let item = response.data.items[`${i}`];
       let snippet = item.snippet;
 
@@ -44,23 +36,23 @@ export default function Results() {
 
       let kind = item.id.kind.slice(8);
       let id = "";
-      if (kind == "video") {
+      if (kind === "video") {
         id = item.id.videoId;
-      } else if (kind == "channel") {
+      } else if (kind === "channel") {
         id = item.id.channelId;
-      } else if (kind == "playlist") {
+      } else if (kind === "playlist") {
         id = item.id.playlistId;
       }
 
       list.push([thumb, title, channel, description, date, kind, id]);
+
     }
 
     setVideos(list)
-    console.log(response.data.items);
-  }
 
+  }
   
-  useEffect(() => {handleSubmit(search);},[])
+  useEffect(() => {handleSubmit(search);},[search])
   
 
   return (
