@@ -6,9 +6,15 @@ export default function SingleRes(props){
 
     const history = useHistory();
 
+    const list=[props.children[1],props.children[2],props.children[3],props.children[4]]
+
     const GoToVideo = () => {
         if (props.children[5] == "video") {
-            history.push(`/video=${props.children[6]}`);
+            //history.push(`/video=${props.children[6]}`);
+            history.push({
+                pathname: `/video=${props.children[6]}`,
+                state: { detail: list }
+            });
         } else if (props.children[5] == "channel") {
             history.push(`/channel=${props.children[6]}`);
         } else if (props.children[5] == "playlist") {

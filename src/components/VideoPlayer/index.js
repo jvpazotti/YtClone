@@ -2,24 +2,30 @@ import { useParams } from "react-router";
 import React from "react";
 import "./index.css"
 import youtube from "../../apis/youtube";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function VideoPlayer() {
 
   let { videoId } = useParams();
 
-  const loadData = async () => {
 
-    const response = await youtube.get('/video', {
-      params: {
-          id: videoId
-      }
-    })
+  // useEffect(() => {
+    
+  //   loadData2().then((res)=>console.log(res))
+  
+  
+  // },[])
 
-    console.log(response.loadData);
-  }
+  const location = useLocation();
 
-  loadData()
+  useEffect(() => {
+     console.log(location.pathname); // result: '/secondpage'
+     console.log(location.state.detail); // result: 'some_value'
+     console.log(location.state.detail2);
+  }, [location]);
 
+  let details=location.state.detail
 
   return (
     <div>
@@ -28,6 +34,16 @@ export default function VideoPlayer() {
       </header>
       <main>
         <iframe className="player" src={`https://www.youtube.com/embed/${videoId}`} allowFullScreen title="Video player" />
+        <ul className="desc">
+          <li>
+          {details[0]}
+          </li>
+          <li>
+          {details[1]}
+          </li>
+          <li>
+          </li>
+        </ul>
       </main>
     </div>
   )
