@@ -42,6 +42,10 @@ export default function VideoPlayer() {
           {details[1]}
           </li>
           <li>
+          {details[2]}
+          </li>
+          <li>
+          {details[3]}
           </li>
         </ul>
       </main>
