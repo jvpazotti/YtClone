@@ -1,54 +1,46 @@
+import { React, useEffect } from "react";
 import { useParams } from "react-router";
-import React from "react";
 import "./index.css"
-import youtube from "../../apis/youtube";
-import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Header from "../Header";
 
 export default function VideoPlayer() {
 
   let { videoId } = useParams();
 
-
-  // useEffect(() => {
-    
-  //   loadData2().then((res)=>console.log(res))
-  
-  
-  // },[])
-
   const location = useLocation();
 
   useEffect(() => {
-     console.log(location.pathname); // result: '/secondpage'
-     console.log(location.state.detail); // result: 'some_value'
-     console.log(location.state.detail2);
+    console.log(location.pathname);
+    console.log(location.state.detail);
   }, [location]);
 
-  let details=location.state.detail
+  let details = location.state.detail
+
+  const handleSubmit = () => {}
 
   return (
+
     <div>
-      <header>
-        <img src="/ytLogo.png" className="logo"/>
-      </header>
+      <Header ReloadData={handleSubmit}/>
       <main>
         <iframe className="player" src={`https://www.youtube.com/embed/${videoId}`} allowFullScreen title="Video player" />
         <ul className="desc">
-          <li>
+          <li className="title">
           {details[0]}
           </li>
-          <li>
+          <li className="channel">
           {details[1]}
           </li>
-          <li>
+          <li className="description">
           {details[2]}
           </li>
-          <li>
-          {details[3]}
+          <li className="date">
+          Published: {details[4]}/{details[5]}/{details[6]}, at {details[3]}
           </li>
         </ul>
       </main>
     </div>
+    
   )
 }

@@ -1,10 +1,9 @@
-import React from "react"
+import { React, useState, useEffect } from "react";
 import "./index.css"
 import SingleRes from "../SingleRes"
 import { useParams } from "react-router-dom";
 import youtube from "../../apis/youtube";
-import { useState, useEffect } from "react";
-import Search2 from "../Search2";
+import Header from "../Header";
 
 
 export default function Results() {
@@ -37,8 +36,8 @@ export default function Results() {
       let item = response.data.items[`${i}`];
       let snippet = item.snippet;
 
-      let thumb = snippet.thumbnails.default.url;
-      let title = snippet.title;
+      let thumb = snippet.thumbnails.high.url;
+      let title = snippet.title.replace("&#39;","'");
       let channel = snippet.channelTitle;
       let description = snippet.description;
       let date = snippet.publishedAt;
@@ -66,10 +65,7 @@ export default function Results() {
 
   return (
     <div>
-      <header>
-        <img src="/ytLogo.png" className="logo"/>
-        <Search2 ReloadData={handleSubmit}/>
-      </header>
+      <Header ReloadData={handleSubmit}/>
       <main>
         {videos.map((video) => (
           <SingleRes>

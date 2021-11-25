@@ -41,18 +41,23 @@
     text-decoration: none;
 }
 
-.header{
+.superLogo{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     width: 100%;
     justify-content: center;
-    
-    
 }
 
-.textao{
-    margin-left: 2rem;
+.ytLogo {
+    height: 20rem;
+}
+
+h1 {
+    color: aliceblue;
+    margin-bottom: 2rem;
+    font-size: xx-large;
+    font-weight: bolder;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-style: italic;
 }

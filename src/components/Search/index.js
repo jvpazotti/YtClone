@@ -1,5 +1,4 @@
-import { useState } from "react";
-import React from "react";
+import { React, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./index.css";
 
@@ -23,28 +22,18 @@ export default function Search(props){
 
     return(
         
-     <div>
-            <div className='search-box'>
-                  <button class="btn-search"><img className="lupa" src="lupa.png"/></button>
-                  <input type="text" class="input-search"  
-                      onChange={nameChanged} 
-                      name='video-search'
-                      placeholder="Digite Aqui"
-                      value={Name}
-                      onKeyPress={ActivSearch}
-                  />
-            </div>
-
-            
-            {/* <div className="divisor">
-             {videos.map((video)=>(
-               <><p className="videos">
-                 {video[0]}
-               </p><img src ={video[1]}/></>
-             ))}
-            </div> */}
-
-     </div>
+      <div>
+        <div className='search-box'>
+          <button class="btn-search"><img className="lupa" src="lupa.png"/></button>
+          <input type="text" class="input-search"  
+              onChange={nameChanged} 
+              name='video-search'
+              placeholder="Digite Aqui"
+              value={Name}
+              onKeyPress={ActivSearch}
+          />
+        </div>
+      </div>
     );
 
 }

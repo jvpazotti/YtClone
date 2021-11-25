@@ -2,13 +2,14 @@
   display: flex;
   align-items: center;
   width: 90%;
-  height: 6rem;
+  height: 10rem;
   font-family: 'Helvetica Neue', sans-serif;
   color: white;
 }
 
 .single:hover {
   background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .single:active {
@@ -17,6 +18,30 @@
 
 .thumb {
   margin: 0 1rem;
-  height: 5rem;
-  width: 7rem;
+  height: 9rem;
+  width: 12.6rem;
+}
+
+.title, .channel, .description, .date {
+  margin: 0.3rem;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.channel {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.description {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.date {
+  font-size: 0.9rem;
+  font-weight: 100;
 }
