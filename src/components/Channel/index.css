@@ -1,0 +1,21 @@
+.name {
+  color: azure;
+  font-size: xx-large;
+  margin: 1rem;
+  font-weight: 900;
+}
+
+.desc {
+  color: azure;
+  align-items: center;
+}
+
+.warn {
+  font-style: normal;
+  font-weight: 300;
+  font-size: x-large;
+}
+
+img {
+  height: 20rem;
+}

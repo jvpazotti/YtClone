@@ -1,0 +1,31 @@
+.name {
+  color: azure;
+  font-size: xx-large;
+  margin: 1rem;
+  font-weight: 900;
+}
+
+p {
+  color: azure;
+  align-items: center;
+  margin: 1rem;
+}
+
+.cont {
+  display: flex;
+  flex-direction: row;
+}
+
+.chan {
+  font-size: large;
+}
+
+.warn {
+  font-style: normal;
+  font-weight: 300;
+  font-size: x-large;
+}
+
+img {
+  height: 20rem;
+}
