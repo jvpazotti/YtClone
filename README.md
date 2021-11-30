@@ -1,7 +1,7 @@
 # YtClone
- 
-Integrantes do grupo
 
-João Victor Pazotti Silva
+*Aplicativo web: https://ytclon3.herokuapp.com/*
 
-Matheus Kwon
+Integrantes do grupo:
+- João Victor Pazotti Silva
+- Matheus Kwon
