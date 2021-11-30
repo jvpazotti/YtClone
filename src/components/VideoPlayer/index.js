@@ -22,16 +22,16 @@ export default function VideoPlayer() {
         <iframe className="player" src={`https://www.youtube.com/embed/${videoId}`} allowFullScreen title="Video player" />
         <ul className="desc">
           <li className="title">
-          {details[0]}
+            {details[0]}
           </li>
           <li className="channel">
-          {details[1]}
+            {details[1]}
           </li>
           <li className="description">
-          {details[2]}
+            {details[2]}
           </li>
           <li className="date">
-          Published: {details[4]}/{details[5]}/{details[6]}, at {details[3]}
+            Published: {details[4]}/{details[5]}/{details[6]}, at {details[3]}
           </li>
         </ul>
       </main>

@@ -11,24 +11,30 @@ export default function SingleRes(props){
     const year = props.children[4].slice(0,4);
     const hour = props.children[4].slice(11,16);
 
-    const list=[props.children[1], props.children[2], props.children[3], hour, day, month, year]
+    const list=[props.children[1], props.children[2], props.children[3], hour, day, month, year, props.children[0]]
 
-    const GoToVideo = () => {
+    const GoTo = () => {
         if (props.children[5] === "video") {
             history.push({
                 pathname: `/video=${props.children[6]}`,
                 state: { detail: list }
             });
         } else if (props.children[5] === "channel") {
-            history.push(`/channel=${props.children[6]}`);
+            history.push({
+                pathname: `/channel=${props.children[6]}`,
+                state: { detail: list }
+            });
         } else if (props.children[5] === "playlist") {
-            history.push(`/playlist=${props.children[6]}`);
+            history.push({
+                pathname: `/playlist=${props.children[6]}`,
+                state: { detail: list }
+            });
         }
     }
 
     return(
 
-        <div className="single" onClick={GoToVideo}>
+        <div className="single" onClick={GoTo}>
             <img className="thumb" src={props.children[0]} alt={props.children[1]}/>
             <div className="texts">
                 <h3 className="title">{props.children[1]}</h3>
