@@ -25,7 +25,7 @@ export default function Header(props){
         <div className="header">
             <div className="home" onClick={GoToHome}>
                 <img src="/ytLogo.png" className="logo" alt="logo"/>
-                <h1 className="logoName">YtClone</h1>
+                <h1 className="logoName">YTclone</h1>
             </div>
             <div className='search-box'>
                 <button className="btn-search2"><img className="lupa" src="lupa.png" alt="search"/></button>

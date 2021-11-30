@@ -11,7 +11,8 @@ export default function Home(){
         <div className="appbar">
           <div className="superLogo">
             <img src="/ytLogo.png" className="ytLogo" alt="logo"/>
-            <h1>YtClone</h1>
+            <h1>YTclone</h1>
+            <div className="phrase"><p>Videos from </p><p className="there">there.</p></div>
           </div>
         </div>
         <main className="container">

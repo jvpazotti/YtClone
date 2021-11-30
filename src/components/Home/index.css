@@ -47,6 +47,7 @@
     align-items: center;
     width: 100%;
     justify-content: center;
+    margin-bottom: 2rem;
 }
 
 .ytLogo {
@@ -55,14 +56,33 @@
 
 h1 {
     color: aliceblue;
-    margin-bottom: 2rem;
     font-size: xx-large;
     font-weight: bolder;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-style: italic;
 }
 
+p {
+    color: azure;
+    font-family: "HelveticaNeue-Light";
+    font-size: larger;
+    margin-left: 0rem;
+    margin: 0.15rem;
+}
+
 .container{
     display: flex;
     justify-content: center;
+}
+
+.phrase {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.there {
+    font-style: italic;
 }
